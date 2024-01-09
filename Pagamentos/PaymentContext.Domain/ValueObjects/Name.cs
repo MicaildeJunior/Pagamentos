@@ -1,6 +1,8 @@
-﻿namespace Pagamentos.PaymentContext.Domain.ValueObjects;
+﻿using Pagamentos.PaymentContext.Shared.ValueObjects;
 
-public class Name
+namespace Pagamentos.PaymentContext.Domain.ValueObjects;
+
+public class Name : ValueObject
 {
     public Name(string firstName, string lastName)
     {

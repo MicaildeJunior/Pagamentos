@@ -11,7 +11,7 @@ public class CreditCardPayment : Payment
         string payer,
         Document document,
         string address,
-        string email) : base(
+        Email email) : base(
             paidDate, 
             expireDate, 
             total, 
