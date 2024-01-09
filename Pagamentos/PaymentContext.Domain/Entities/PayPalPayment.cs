@@ -11,8 +11,8 @@ public class PayPalPayment : Payment
         decimal total, 
         decimal totalPaid, 
         string payer, 
-        Document document, 
-        string address,
+        Document document,
+        Address address,
         Email email) : base( 
             paidDate, 
             expireDate, 

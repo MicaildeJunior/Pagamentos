@@ -10,7 +10,7 @@ public class CreditCardPayment : Payment
         decimal totalPaid,
         string payer,
         Document document,
-        string address,
+        Address address,
         Email email) : base(
             paidDate, 
             expireDate, 
