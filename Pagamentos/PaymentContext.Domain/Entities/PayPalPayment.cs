@@ -1,4 +1,6 @@
-﻿namespace Pagamentos.PaymentContext.Domain.Entities;
+﻿using Pagamentos.PaymentContext.Domain.ValueObjects;
+
+namespace Pagamentos.PaymentContext.Domain.Entities;
 
 public class PayPalPayment : Payment
 {
@@ -9,7 +11,7 @@ public class PayPalPayment : Payment
         decimal total, 
         decimal totalPaid, 
         string payer, 
-        string document, 
+        Document document, 
         string address, 
         string email) : base( 
             paidDate, 
