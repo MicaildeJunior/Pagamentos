@@ -18,18 +18,28 @@ public class Student : Entity
 
     public Name Name { get; set; }
     public Document Document { get; private set; }
-    public Email Email { get; private set; } 
+    public Email Email { get; private set; }
     public Address Address { get; private set; }
     public IReadOnlyCollection<Subscription> Subscriptions { get { return _subscriptions.ToArray(); } }
 
     public void AddSubscription(Subscription subscription)
     {
-        // Se já tiver assinatura ativa, cancela
+        var hasSubscriptionActive = false;
+        foreach (var sub in _subscriptions)
+        {
+            if (subscription.Active)
+                hasSubscriptionActive = true;
+        }
 
-        // Cancela todas as assinaturas, e coloca esta como principal
-        foreach (var sub in Subscriptions)       
-            sub.Inactivate();
-        
-        _subscriptions.Add(subscription);
+        // Usando o Contrato
+
+        /*AddNotifications(new Contract()
+            .Requires()
+            .IsFalse(hasSubscriptionActive, "Student.Subscriptions", "Você já tem uma assinatura")
+        );*/
+
+        // Outra Alternativa
+        if (hasSubscriptionActive)
+            AddNotification("Student.Subscriptions", "Você já tem uma assinatura");
     }
 }
