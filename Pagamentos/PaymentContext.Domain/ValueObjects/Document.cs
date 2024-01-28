@@ -27,7 +27,7 @@ public class Document : ValueObject
 
         if (Type == EDocumentType.CPF && Number.Length == 11)
             return true;
-        
+
         return false;
     }
 }

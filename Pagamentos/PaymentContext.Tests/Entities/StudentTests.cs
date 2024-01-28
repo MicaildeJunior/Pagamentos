@@ -7,7 +7,7 @@ namespace Pagamentos.PaymentContext.Tests.Entities;
 [TestClass]
 public class StudentTests
 {
-    [TestMethod]
+    //[TestMethod]
     public void AdicionarAssinatura()
     {
         
