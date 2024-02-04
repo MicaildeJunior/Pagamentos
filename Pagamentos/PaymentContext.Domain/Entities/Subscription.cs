@@ -1,5 +1,4 @@
 ﻿using Pagamentos.PaymentContext.Shared.Entities;
-using System.Diagnostics.Contracts;
 
 namespace Pagamentos.PaymentContext.Domain.Entities;
 
@@ -19,7 +18,7 @@ public class Subscription : Entity
     public DateTime LastUpdateDate { get; private set; }
     public DateTime? ExpireDate { get; private set; }
     public bool Active { get; private set; }
-    public IReadOnlyCollection<Payment> Payments { get; private set; }
+    public IReadOnlyCollection<Payment> Payments { get { return _payments.ToArray(); } }
 
     public void AddPayment(Payment payment)
     {
@@ -28,6 +27,7 @@ public class Subscription : Entity
             .IsGreaterThan(DateTime.Now, payment.PaidDate, "Subscription.Payments", "A data do pagamento deve ser futura")
         );
 
+        // if(Valid) // Só adiciona se for válido
         _payments.Add(payment);
     }
 

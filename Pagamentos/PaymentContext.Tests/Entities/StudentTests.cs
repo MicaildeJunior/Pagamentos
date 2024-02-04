@@ -2,9 +2,6 @@
 using Pagamentos.PaymentContext.Domain.Entities;
 using Pagamentos.PaymentContext.Domain.Enums;
 using Pagamentos.PaymentContext.Domain.ValueObjects;
-using System.Net;
-using System.Reflection.Metadata;
-using Document = Pagamentos.PaymentContext.Domain.ValueObjects.Document;
 
 namespace Pagamentos.PaymentContext.Tests.Entities;
 
@@ -33,15 +30,11 @@ public class StudentTests
     public void ShouldReturnErrorWhenHadActiveSubscription()
     {
         var payment = new PayPalPayment("12345678", DateTime.Now, DateTime.Now.AddDays(5), 10, 10, "Parker Corp", _document, _address, _email);
-
         _subscription.AddPayment(payment);
-
-        _student.AddSubscription(_subscription);
-        // essa é pra dar erro
-        _student.AddSubscription(_subscription);
-
-        // se der tudo certo no codigo acima vai retornar Invalid
-        Assert.IsTrue(_student.Invalid);
+        _student.AddSubscription(_subscription);       
+        _student.AddSubscription(_subscription); // essa é pra dar erro        
+        
+        Assert.IsTrue(_student.Invalid); // se der tudo certo no codigo acima vai retornar Invalid
     }
 
     [TestMethod]
@@ -53,5 +46,15 @@ public class StudentTests
         var student = new Student(name, document, email);
 
         Assert.Fail();
+    }
+
+    [TestMethod]
+    public void ShoulReturnSuccessWhenHadNoAddSubscription()
+    {
+        var payment = new PayPalPayment("12345678", DateTime.Now, DateTime.Now.AddDays(5), 10, 10, "Parker Corp", _document, _address, _email);
+        _subscription.AddPayment(payment);
+        _student.AddSubscription(_subscription);       
+        
+        Assert.IsTrue(_student.Valid); 
     }
 }
