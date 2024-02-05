@@ -1,6 +1,6 @@
 ﻿using Pagamentos.PaymentContext.Shared.Commands;
 
-namespace Pagamentos.PaymentContext.Shared.Handlres
+namespace Pagamentos.PaymentContext.Shared.Handlers
 {
     public interface IHandler<T> where T : ICommand
     {

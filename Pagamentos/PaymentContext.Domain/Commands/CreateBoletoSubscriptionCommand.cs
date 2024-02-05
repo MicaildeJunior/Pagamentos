@@ -1,7 +1,7 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
 using Pagamentos.PaymentContext.Domain.Enums;
-using Pagamentos.PaymentContext.Shared.Comands;
+using Pagamentos.PaymentContext.Shared.Commands;
 
 namespace Pagamentos.PaymentContext.Domain.Commands;
 
