@@ -46,6 +46,6 @@ public class SubscriptionHandlerTests
         command.Zipode = "7777";
 
         handler.Handle(command);
-        Assert.AreEqual(false, command.Valid);
+        Assert.AreEqual(false, handler.Valid);
     }
 }

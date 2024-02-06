@@ -135,6 +135,7 @@ public class SubscriptionHandler :
 
         // Enviar E-Mail de boas Vindas
         _emailService.Send(student.Name.ToString(), student.Email.Address, "Bem vindo ao Balta.io", "Sua assinatura foi criada");
+        
         // Retornar Informações
         return new CommandResult(true, "Seu pagamento foi realizado");
     }
